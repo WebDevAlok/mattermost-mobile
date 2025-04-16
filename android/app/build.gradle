@@ -183,9 +183,17 @@ android {
             }
         }
     }
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+    }
 }
 
 repositories {
+    google() // ✅ this is preferred over manually specifying the URL
+    mavenCentral() // ✅ for a wide range of libraries
     maven {
         url 'https://maven.google.com'
     }
